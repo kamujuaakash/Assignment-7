@@ -1,0 +1,92 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+% \usetheme{Frankfurt}
+% \usetheme{Darmstadt}
+% \usetheme{Berlin}
+% \usetheme{Warsaw}
+% \usetheme{Berkeley}
+% \usetheme{Bergen}
+% \usetheme{CambridgeUS}
+% \usetheme{Copenhagen}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\mysolution}{\noindent \textbf{Solution: }}
+
+\title{AI1110 - Probability and Random Variables\\
+        Assignment 7}
+\author{Aakash Kamuju (ai21btech11001)}
+\begin{document}
+\maketitle
+    % \begin{frame}{Table of Contents}
+    % \tableofcontents
+    % \end{frame}
+    \begin{frame}{Outline}
+    \tableofcontents
+    \end{frame}
+    \begin{frame}{Question}
+        \begin{section}{Question}
+            \begin{block}{EXAMPLE 7-6}
+             If x is a random variable with distribution F(x), then the given random variable y = F(x) is uniform in the interval (0, 1).\\
+The following is a generalization.\\
+Given n arbitrary random variables $x_i$ we form the random variables\\
+$y_1 = F(x_1)$ $y_2 = F(x_2|x_1)$,...., $y_n = F(x_n|x_n-1,...,x_1)$\\
+We shall show that these random variables are independent and each is uniform in the interval (0,1). 
+   \end{block}
+    \end{section}
+    \end{frame}
+    \begin{frame}{Solution}
+        \begin{section}{Solution}
+            \begin{block}{Solution}
+            The random variables $y_i$ are functions of the random variables Xi obtained with the transformation. For $0 \le y_i \le 1$, the system \\ 
+            $y_1 = F(x_1)$ $y_2 = F(x_2|x_1)$,...., $y_n = F(x_n|x_n-1,...,x_1)$\\
+has a unique solution $x_1$,..,$x_n$ and its jacobian equals
+        \end{block}
+       \end{section}
+  \end{frame}
+  \begin{frame}
+        \begin{section}{Solution Continued}
+            \begin{block}{Solution Continued}
+           $$ J = \begin{vmatrix}
+                     \frac{\partial y_1}{\partial x_1} &0 &0 &. &. &. &0
+                      \\
+                     \frac{\partial y_2}{\partial x_1} &\frac{\partial y_2}{\partial x_2} &0 &. &. &. &0 \\
+                     .  &  . &. &. &. &. &\\
+                     \frac{\partial y_n}{\partial x_1} &\frac{\partial y_n}{\partial x_2} &. &. &. &. &\frac{\partial y_n}{\partial x_n}
+                      
+\end{vmatrix}$$
+This determinant is triangular; hence it equals the product of its diagonal elements.
+        \end{block}
+       \end{section}
+  \end{frame}
+    \begin{frame}
+        \begin{section}{Solution Continued}
+            \begin{block}{Solution Continued}
+            $$\frac{\partial y_n}{\partial x_n} = f(x_k|x_k-1,...,x_1)$$\\
+            After transforming, we obtain
+$$f(y_1,y_2,..y_n) = \frac{f(x_1,..,x_n)}{f(x_1)f(x_2|x_1)...f(x_n|x_n-1,..,x_1)} = 1$$ \\
+in the n-dimensional cube $0 < y_i< 1$, and 0 otherwise
+        \end{block}
+       \end{section}
+  \end{frame}
+  \begin{frame}
+        \begin{section}{Solution Continued}
+            \begin{block}{Solution Continued}
+            It follows that\\
+           $$ f(x_1|x_3) =  \int_{-\infty}^{\infty} f(x_1)$$
+           $$ f(x_1|x_4) =  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x_1|x_2,x_3,x_4)f(x_2,x_3|x_4)dx_2dx_3$$
+           Generalizing. we obtain the following rule for removing variables on the left or on the right of the conditional line: To remove any number of variables on the left of the,conditional line, we integrate with respect to them. To remove any number of variables,to the right of the line, we multiply by their conditional density with respect to the remaining variables on the right, and we integrate the product
+        \end{block}
+       \end{section}
+  \end{frame}
+  \begin{frame}
+        \begin{section}{Solution Continued}
+            \begin{block}{Solution Continued}
+            
+            $$E(x_1|x_2,x_3) = E(E(x_2,x_3|x_4)) = \int_{-\infty}^{\infty} E(x_1|x_2,x_3,x_4)f(x_4|x_2,x_3)dx_4$$
+                            
+            This leads to the following generalization: To remove any number of variables on the right of the conditional expected value line, we multiply by their conditional density with respect to the remaining variables on the right and we integrate the product.So we can say that these random variables are independent and each is uniform in the interval (0,1)
+        \end{block}
+       \end{section}
+  \end{frame}
+\end{document}
